@@ -9,6 +9,8 @@ const PropertyList = ({ properties }) => {
                         key={ property.id }
                         title={ property.title }
                         picture={ property.image }
+                        description={ property.description }
+                        superHost={ property.superhost }
                     />
                 ))
             }

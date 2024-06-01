@@ -35,11 +35,10 @@ const Home = () => {
 
       <div className="max-w-[1136px] mt-12">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
+        {
+          data && <PropertyList properties={ data } />
+        }
       </div>
-
-      {
-        data && <PropertyList properties={ data } />
-      }
       
     </main>
   );
