@@ -10,7 +10,10 @@ const PropertyList = ({ properties }) => {
                         title={ property.title }
                         picture={ property.image }
                         description={ property.description }
+                        capacity={ property.capacity }
                         superHost={ property.superhost }
+                        price={ property.price }
+                        rating={ property.rating }
                     />
                 ))
             }
