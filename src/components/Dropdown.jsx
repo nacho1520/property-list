@@ -12,7 +12,7 @@ const Dropdown = ({ label, options, activeType, setType }) => {
                 className={`inline-flex flex-wrap gap-[10px] px-6 py-3 cursor-pointer ${ open ? 'border-t border-l border-r rounded-t-xl' : 'border rounded-xl' } border-card-stroke`}
                 onClick={ () => setOpen(prev => !prev) }
             >
-                <p className="text-white-font text-sm font-bold">{ Object.keys(activeType).length != 0 ? activeType.label : label }</p>
+                <p className="min-w-24 text-white-font text-sm font-bold">{ Object.keys(activeType).length != 0 ? activeType.label : label }</p>
                 <img 
                     src={ expandIcon.src }
                     width={ 24 }

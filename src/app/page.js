@@ -106,8 +106,6 @@ const Home = () => {
       })
   }, []);
 
-
-
   useEffect(() => {
     let filtered = filterProperties();
     setProperties(filtered);
@@ -136,7 +134,6 @@ const Home = () => {
         </div>
         
       </div>
-
 
       <div className="max-w-[1136px] w-[90%] mt-[99px]">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
