@@ -13,6 +13,7 @@ module.exports = {
         "card-stroke": "#4A5567",
         "gray-font": "#97A3B6",
         "super-gray": "#20293A",
+        "toggle-blue": "#4E80EE",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

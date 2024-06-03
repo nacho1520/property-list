@@ -4,6 +4,7 @@ import heroImg from "../assets/hero-image.jpg";
 import { useEffect, useState } from "react";
 import PropertyList from "@/components/PropertyList";
 import Tabs from "@/components/Tabs";
+import Toggle from "@/components/Toggle";
 
 const tabs = [
   {
@@ -32,9 +33,14 @@ const Home = () => {
   const [ data, setData ] = useState([]);
   const [ loading, setLoading ] = useState(true);
   const [ activeTab, setActiveTab ] = useState(tabs[0].id);
+  const [ superhost, setSuperhost  ] = useState(false);
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
+  };
+
+  const handleSuperhost = () => {
+    setSuperhost(prevState => !prevState);
   };
 
   useEffect(() => {
@@ -62,8 +68,11 @@ const Home = () => {
         </div>
 
         <div className="absolute bottom-[-51px] w-full flex justify-center">
-          <div className="px-10 py-8 max-w-[1136px] border border-card-stroke bg-super-gray/95 rounded-xl">
+          <div className="flex justify-between items-center px-10 py-8 max-w-[1136px] border border-card-stroke bg-super-gray/95 rounded-xl">
             <Tabs tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabChange } />
+            <div>
+              <Toggle label="Superhost" active={ superhost } setActive={ handleSuperhost } />
+            </div>
           </div>
         </div>
         
