@@ -47,12 +47,20 @@ const Home = () => {
   const [ data, setData ] = useState([]);
   const [ properties, setProperties ] = useState([]);
   const [ loading, setLoading ] = useState(true);
-  const [ activeTab, setActiveTab ] = useState(tabs[0].id);
+  const [ activeTab, setActiveTab ] = useState([]);
   const [ superhost, setSuperhost  ] = useState(false);
   const [ propertyType, setPropertyType ] = useState({});
 
   const handleTabChange = (tabId) => {
-    setActiveTab(tabId);
+    let tab = tabs.find(item => item.id == tabId);
+    if(tab.id == 1 ) {
+      setActiveTab([]);
+    }
+    else if(activeTab.find(item => item.id == tabId)) {
+      setActiveTab(list => list.filter(item => item.id != tabId));
+    } else {
+      setActiveTab(oldArray => [...oldArray, tab]);
+    }
   };
 
   const handleSuperhost = () => {
@@ -69,11 +77,10 @@ const Home = () => {
   };
 
   const filterProperties = () => {
-    const location = tabs.find(tab => tab.id === activeTab);
-    console.log(location);
+    const selectedLocations = activeTab.map(item => item.label);
     let filteredProperties;
-    if(location.label != "All Stays") {
-      filteredProperties = data.filter(item => item.location == location.label );
+    if(selectedLocations.length > 0) {
+      filteredProperties = data.filter(item => selectedLocations.includes(item.location));
     } else {
       filteredProperties = data;
     }
