@@ -66,6 +66,9 @@ const Home = () => {
     } else {
       filteredProperties = data;
     }
+    if(superhost) {
+      filteredProperties = filteredProperties.filter(item => item.superhost);
+    }
     return filteredProperties;
   };
 
@@ -87,7 +90,7 @@ const Home = () => {
   useEffect(() => {
     let filtered = filterProperties();
     setProperties(filtered);
-  }, [activeTab]);
+  }, [activeTab, superhost]);
 
   return (
     <main className="flex flex-col items-center pb-11">
