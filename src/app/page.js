@@ -3,10 +3,39 @@
 import heroImg from "../assets/hero-image.jpg";
 import { useEffect, useState } from "react";
 import PropertyList from "@/components/PropertyList";
+import Tabs from "@/components/Tabs";
+
+const tabs = [
+  {
+    id: 1,
+    label: "All Stays"
+  },
+  {
+    id: 2,
+    label: "Norway",
+  },
+  {
+    id: 3,
+    label: "Finland",
+  },
+  {
+    id: 4,
+    label: "Sweden",
+  },
+  {
+    id: 5,
+    label: "Switzerland",
+  },
+];
 
 const Home = () => {
   const [ data, setData ] = useState([]);
   const [ loading, setLoading ] = useState(true);
+  const [ activeTab, setActiveTab ] = useState(tabs[0].id);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+  };
 
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/property-listing-data.json')
@@ -28,12 +57,20 @@ const Home = () => {
           style={{ width: "100%", height: "100vh", objectFit: "cover" }}
         />
         <div className="absolute left-[140px] top-[180px] z-10">
-          <p className="text-primary-dark-blue text-[4rem] font-bold w-[500px]">Peace, nature, dream</p>
+          <p className="text-primary-dark-blue text-[4rem] font-extrabold w-[550px] mb-2">Peace, nature, dream</p>
           <p className="text-primary-dark-blue text-2xl font-semibold w-[500px]">Find and book a great experience.</p>
         </div>
+
+        <div className="absolute bottom-[-51px] w-full flex justify-center">
+          <div className="px-10 py-8 max-w-[1136px] border border-card-stroke bg-super-gray/95 rounded-xl">
+            <Tabs tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabChange } />
+          </div>
+        </div>
+        
       </div>
 
-      <div className="max-w-[1136px] mt-12">
+
+      <div className="max-w-[1136px] mt-[99px]">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
         {
           data && <PropertyList properties={ data } />
