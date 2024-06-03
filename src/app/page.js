@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import PropertyList from "@/components/PropertyList";
 import Tabs from "@/components/Tabs";
 import Toggle from "@/components/Toggle";
+import Dropdown from "@/components/Dropdown";
 
 const tabs = [
   {
@@ -27,6 +28,17 @@ const tabs = [
     id: 5,
     label: "Switzerland",
   },
+];
+
+const propertyTypes = [
+  {
+    id: 1,
+    label: "1 bedroom",
+  },
+  {
+    id: 2,
+    label: "2 bedrooms",
+  }
 ];
 
 const Home = () => {
@@ -68,10 +80,11 @@ const Home = () => {
         </div>
 
         <div className="absolute bottom-[-51px] w-full flex justify-center">
-          <div className="flex justify-between items-center px-10 py-8 max-w-[1136px] border border-card-stroke bg-super-gray/95 rounded-xl">
+          <div className="flex justify-between items-center px-10 py-8 max-w-[1136px] w-[90%] border border-card-stroke bg-super-gray/95 rounded-xl">
             <Tabs tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabChange } />
-            <div>
+            <div className="inline-flex flex-wrap gap-5 items-center">
               <Toggle label="Superhost" active={ superhost } setActive={ handleSuperhost } />
+              <Dropdown label="Property type" options={ propertyTypes }/>
             </div>
           </div>
         </div>
@@ -79,7 +92,7 @@ const Home = () => {
       </div>
 
 
-      <div className="max-w-[1136px] mt-[99px]">
+      <div className="max-w-[1136px] w-[90%] mt-[99px]">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
         {
           data && <PropertyList properties={ data } />
