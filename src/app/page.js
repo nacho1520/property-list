@@ -1,6 +1,6 @@
 "use client";
 
-import heroImg from "../assets/hero-image.jpg";
+import heroImg from "../assets/hero.svg";
 import { useEffect, useState } from "react";
 import PropertyList from "@/components/PropertyList";
 import Tabs from "@/components/Tabs";
@@ -113,20 +113,20 @@ const Home = () => {
 
   return (
     <main className="flex flex-col items-center pb-11">
-      <div className="w-full relative">
+      <div className="w-full h-[620px] relative">
         <img 
           src={ heroImg.src }
-          style={{ width: "100%", height: "100vh", objectFit: "cover" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
-        <div className="absolute left-[140px] top-[180px] z-10">
+        <div className="absolute left-[64px] lg:left-[140px] xl:left-[112px] top-[180px] z-10">
           <p className="text-primary-dark-blue text-[4rem] font-extrabold w-[550px] mb-2">Peace, nature, dream</p>
           <p className="text-primary-dark-blue text-2xl font-semibold w-[500px]">Find and book a great experience.</p>
         </div>
 
         <div className="absolute bottom-[-51px] w-full flex justify-center">
-          <div className="flex justify-between items-center px-10 py-8 max-w-[1136px] w-[90%] border border-card-stroke bg-super-gray/95 rounded-xl">
+          <div className="flex flex-col lg:flex-row justify-between items-center px-10 py-8 max-w-[1136px] w-[90%] border border-card-stroke bg-super-gray/95 rounded-xl">
             <Tabs tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabChange } />
-            <div className="inline-flex flex-wrap gap-5 items-center">
+            <div className="inline-flex flex-wrap gap-5 items-center mt-5 lg:mt-0">
               <Toggle label="Superhost" active={ superhost } setActive={ handleSuperhost } />
               <Dropdown label="Property type" options={ propertyTypes } activeType={ propertyType } setType={ handlePropertyChange }/>
             </div>
@@ -135,7 +135,7 @@ const Home = () => {
         
       </div>
 
-      <div className="max-w-[1136px] w-[90%] mt-[99px]">
+      <div className="max-w-[1136px] xl:w-[90%] mt-[99px]">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
         {
           properties && <PropertyList properties={ properties } />

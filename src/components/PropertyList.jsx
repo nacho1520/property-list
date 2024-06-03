@@ -2,7 +2,7 @@ import PropertyCard from "./PropertyCard";
 
 const PropertyList = ({ properties }) => {
     return(
-        <div className="grid grid-cols-3 gap-x-8 gap-y-[72px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-[72px]">
             {
                 properties.map((property) => (
                     <PropertyCard 

@@ -19,7 +19,7 @@ const PropertyCard = ({ title, picture, description, capacity, superHost, price,
             </div>
             <div className="w-full px-5">
                 <p className="text-white-font font-bold text-base mb-4">{ title }</p>
-                <p className="font-medium text-sm text-gray-font" >{ description }</p>
+                <p className="font-medium text-sm text-gray-font min-h-[100px]" >{ description }</p>
                 <div className="inline-flex flex-wrap gap-4 mt-4">
                     <div className="inline-flex flex-wrap gap-1 items-center">
                         <img 
