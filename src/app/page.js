@@ -10,7 +10,7 @@ import Dropdown from "@/components/Dropdown";
 const tabs = [
   {
     id: 1,
-    label: "All Stays"
+    label: "All Stays",
   },
   {
     id: 2,
@@ -43,11 +43,13 @@ const propertyTypes = [
 
 const Home = () => {
   const [ data, setData ] = useState([]);
+  const [ properties, setProperties ] = useState([]);
   const [ loading, setLoading ] = useState(true);
   const [ activeTab, setActiveTab ] = useState(tabs[0].id);
   const [ superhost, setSuperhost  ] = useState(false);
 
   const handleTabChange = (tabId) => {
+    console.log('Cambio la tab');
     setActiveTab(tabId);
   };
 
@@ -55,17 +57,37 @@ const Home = () => {
     setSuperhost(prevState => !prevState);
   };
 
+  const filterProperties = () => {
+    const location = tabs.find(tab => tab.id === activeTab);
+    console.log(location);
+    let filteredProperties;
+    if(location.label != "All Stays") {
+      filteredProperties = data.filter(item => item.location == location.label );
+    } else {
+      filteredProperties = data;
+    }
+    return filteredProperties;
+  };
+
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/property-listing-data.json')
       .then(response => response.json())
       .then(data => {
         setData(data);
+        setProperties(data);
         setLoading(false);
       })
       .catch(error => {
         console.log(error)
       })
   }, []);
+
+
+
+  useEffect(() => {
+    let filtered = filterProperties();
+    setProperties(filtered);
+  }, [activeTab]);
 
   return (
     <main className="flex flex-col items-center pb-11">
@@ -95,7 +117,7 @@ const Home = () => {
       <div className="max-w-[1136px] w-[90%] mt-[99px]">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
         {
-          data && <PropertyList properties={ data } />
+          properties && <PropertyList properties={ properties } />
         }
       </div>
       

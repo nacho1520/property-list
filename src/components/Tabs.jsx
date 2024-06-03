@@ -4,6 +4,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
             {
                 tabs.map(tab => (
                     <button 
+                        key={ tab.id }
                         className={`text-white-font font-bold text-sm px-3 py-2 rounded-lg ${ tab.id === activeTab ? 'bg-card-stroke' : ''}`}
                         onClick={ () => setActiveTab(tab.id) }
                     >
