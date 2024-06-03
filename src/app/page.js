@@ -34,10 +34,12 @@ const propertyTypes = [
   {
     id: 1,
     label: "1 bedroom",
+    value: 1,
   },
   {
     id: 2,
     label: "2 bedrooms",
+    value: 2,
   }
 ];
 
@@ -47,14 +49,23 @@ const Home = () => {
   const [ loading, setLoading ] = useState(true);
   const [ activeTab, setActiveTab ] = useState(tabs[0].id);
   const [ superhost, setSuperhost  ] = useState(false);
+  const [ propertyType, setPropertyType ] = useState({});
 
   const handleTabChange = (tabId) => {
-    console.log('Cambio la tab');
     setActiveTab(tabId);
   };
 
   const handleSuperhost = () => {
     setSuperhost(prevState => !prevState);
+  };
+
+  const handlePropertyChange = (typeId) => {
+    if(Object.keys(propertyType) != 0 && propertyType.id == typeId) {
+      setPropertyType({});
+    } else {
+      let type = propertyTypes.find(item => item.id === typeId);
+      setPropertyType(type);
+    }
   };
 
   const filterProperties = () => {
@@ -68,6 +79,9 @@ const Home = () => {
     }
     if(superhost) {
       filteredProperties = filteredProperties.filter(item => item.superhost);
+    }
+    if(Object.keys(propertyType) != 0) {
+      filteredProperties = filteredProperties.filter(item => item.capacity.bedroom == propertyType.value);
     }
     return filteredProperties;
   };
@@ -90,7 +104,7 @@ const Home = () => {
   useEffect(() => {
     let filtered = filterProperties();
     setProperties(filtered);
-  }, [activeTab, superhost]);
+  }, [activeTab, superhost, propertyType]);
 
   return (
     <main className="flex flex-col items-center pb-11">
@@ -109,7 +123,7 @@ const Home = () => {
             <Tabs tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabChange } />
             <div className="inline-flex flex-wrap gap-5 items-center">
               <Toggle label="Superhost" active={ superhost } setActive={ handleSuperhost } />
-              <Dropdown label="Property type" options={ propertyTypes }/>
+              <Dropdown label="Property type" options={ propertyTypes } activeType={ propertyType } setType={ handlePropertyChange }/>
             </div>
           </div>
         </div>

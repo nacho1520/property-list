@@ -3,7 +3,7 @@
 import expandIcon from "../assets/Expand_down.svg";
 import { useState } from "react";
 
-const Dropdown = ({ label, options }) => {
+const Dropdown = ({ label, options, activeType, setType }) => {
     const [ open, setOpen ] = useState(false);
     
     return(
@@ -12,7 +12,7 @@ const Dropdown = ({ label, options }) => {
                 className={`inline-flex flex-wrap gap-[10px] px-6 py-3 cursor-pointer ${ open ? 'border-t border-l border-r rounded-t-xl' : 'border rounded-xl' } border-card-stroke`}
                 onClick={ () => setOpen(prev => !prev) }
             >
-                <p className="text-white-font text-sm font-bold">{ label }</p>
+                <p className="text-white-font text-sm font-bold">{ Object.keys(activeType).length != 0 ? activeType.label : label }</p>
                 <img 
                     src={ expandIcon.src }
                     width={ 24 }
@@ -29,7 +29,11 @@ const Dropdown = ({ label, options }) => {
                     options.map(option => (
                         <p 
                             key={ option.id }
-                            className="text-white-font font-medium px-6 py-2"
+                            className={`text-white-font font-medium px-6 py-2 cursor-pointer ${ Object.keys(activeType).length != 0 ? (activeType.id == option.id ? 'bg-slate-600' : '') : '' } `}
+                            onClick={ () => {
+                                setType(option.id);
+                                setOpen(false);
+                            }}
                         >
                             { option.label }
                         </p>
