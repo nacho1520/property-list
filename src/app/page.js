@@ -117,14 +117,14 @@ const Home = () => {
       <div className="w-full h-[620px] relative">
         <img 
           src={ heroImg.src }
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "0% 35%" }}
         />
-        <div className="absolute left-[64px] lg:left-[140px] xl:left-[112px] top-[180px] z-10">
-          <p className="text-primary-dark-blue text-[4rem] font-extrabold w-[550px] mb-2">Peace, nature, dream</p>
-          <p className="text-primary-dark-blue text-2xl font-semibold w-[500px]">Find and book a great experience.</p>
+        <div className="absolute left-[64px] lg:left-[112px] xl:left-[140px] top-[180px] z-10">
+          <p className="text-primary-dark-blue text-[2rem] font-semibold sm:text-[4rem]  sm:w-[550px] mb-2">Peace, nature, dream</p>
+          <p className="text-primary-dark-blue text-2xl font-medium lg:w-[500px]">Find and book a great experience.</p>
         </div>
 
-        <div className="absolute bottom-[-51px] w-full flex justify-center">
+        <div className="absolute bottom-[-58px] w-full flex justify-center">
           <div className="flex flex-col lg:flex-row justify-between items-center px-10 py-8 max-w-[1136px] w-[90%] border border-card-stroke bg-super-gray/95 rounded-xl">
             <Tabs tabs={ tabs } activeTab={ activeTab } setActiveTab={ handleTabChange } />
             <div className="inline-flex flex-wrap gap-5 items-center mt-5 lg:mt-0">

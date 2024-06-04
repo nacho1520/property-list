@@ -1,5 +1,7 @@
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Property List",
@@ -9,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-primary-dark-blue font-display">{children}</body>
+      <body className={`bg-primary-dark-blue ${ outfit.className } `}>{children}</body>
     </html>
   );
 }
