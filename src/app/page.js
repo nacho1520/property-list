@@ -121,7 +121,7 @@ const Home = () => {
         />
         <div className="absolute left-[64px] lg:left-[112px] xl:left-[140px] top-[180px] z-10">
           <p className="text-primary-dark-blue text-[2rem] font-semibold sm:text-[4rem]  sm:w-[550px] mb-2">Peace, nature, dream</p>
-          <p className="text-primary-dark-blue text-2xl font-medium lg:w-[500px]">Find and book a great experience.</p>
+          <p className="text-primary-dark-blue text-2xl font-normal lg:w-[500px]">Find and book a great experience.</p>
         </div>
 
         <div className="absolute bottom-[-58px] w-full flex justify-center">
