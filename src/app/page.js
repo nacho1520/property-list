@@ -6,6 +6,7 @@ import PropertyList from "@/components/PropertyList";
 import Tabs from "@/components/Tabs";
 import Toggle from "@/components/Toggle";
 import Dropdown from "@/components/Dropdown";
+import Skeleton from "@/components/Skeleton";
 
 const tabs = [
   {
@@ -137,6 +138,16 @@ const Home = () => {
 
       <div className="max-w-[1136px] xl:w-[90%] mt-[99px]">
         <p className="text-white-font font-bold text-2xl mb-8">Over 200 stays</p>
+        {
+          loading && 
+          <div className="grid grid-cols-1 gap-8 mt-10 lg:grid-cols-2 xl:grid-cols-3">
+            {
+              [1,2,3,4,5,6].map(index => (
+                <Skeleton key={ index } />
+              ))
+            }
+          </div>
+        }
         {
           properties && <PropertyList properties={ properties } />
         }

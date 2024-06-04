@@ -23,3 +23,12 @@
     text-wrap: balance;
   }
 }
+
+.skeleton {
+  animation: scale 4s infinite;
+}
+
+@keyframes scale {
+  0% { transform: scale(0.9) }
+  100% { transform: scale(1) }
+}
